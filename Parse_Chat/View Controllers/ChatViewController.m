@@ -18,6 +18,8 @@
 
 @implementation ChatViewController
 
+//MARK: Figure out where to put user query setup..
+
 
 //TODO: Figure out how to get label to show in cell
 //TODO: Still need to set label to back info for cellforatRowIndexPath if needed...
@@ -31,7 +33,7 @@
     self.chatTableView.dataSource = self;//this connects the file to datasource methods
     self.chatTableView.delegate = self;//this helps connect file
     // Do any additional setup after loading the view.
-    [NSTimer scheduledTimerWithTimeInterval:1 target:self selector:@selector(refreshView) userInfo:nil repeats:true];//every 1 second it calls the refresh function
+    [NSTimer scheduledTimerWithTimeInterval:0.1 target:self selector:@selector(refreshView) userInfo:nil repeats:true];//every 1 second it calls the refresh function
     
     
 }
@@ -40,7 +42,7 @@
     PFObject *chatMessage = [PFObject objectWithClassName:@"Message_FBU2021"];//creates chatMessage object derived from PFObject
     
     chatMessage[@"text"] = self.chatMessageField.text;//assigns text from field to chatMessage array
-    
+    PFUser.currentUser.username = chatMessage[@"user"];
     
     //Calls saveInBackgrounWithBlock block from PFObject to save and store message
     [chatMessage saveInBackgroundWithBlock:^(BOOL succeeded, NSError * error) {
@@ -92,6 +94,15 @@
     ChatCell *cell = [tableView dequeueReusableCellWithIdentifier:@"ChatCell"];//allows reusing cells
     PFObject *pushedLabel = self.postArray[indexPath.row];
     cell.givenChatMessageLabel.text = pushedLabel[@"text"];//since not defined as a model, have to grab directly
+    PFUser *user = pushedLabel[@"user"];
+    if (user != nil) {
+        // User found! update username label with username
+        cell.givenChatUser.text = user.username;
+    } else {
+        // No user found, set default username
+        cell.givenChatUser.text = @"🤖";
+    }
+    
 //    NSLog(@"BELOW LIES TEST");
 //    NSLog(@"%@", pushedLabel);
     return cell;

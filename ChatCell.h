@@ -11,6 +11,7 @@ NS_ASSUME_NONNULL_BEGIN
 
 @interface ChatCell : UITableViewCell
 @property (weak, nonatomic) IBOutlet UILabel *givenChatMessageLabel;
+@property (weak, nonatomic) IBOutlet UILabel *givenChatUser;
 
 @end
 
