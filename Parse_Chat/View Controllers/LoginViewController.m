@@ -17,7 +17,7 @@
 @end
 
 @implementation LoginViewController
-
+//TODO: ADD Alert Controllers for username password incorrect, duplicate user etc.
 - (void)viewDidLoad {
     [super viewDidLoad];
     // Do any additional setup after loading the view.

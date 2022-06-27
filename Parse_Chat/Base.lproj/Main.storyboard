@@ -42,7 +42,7 @@
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <color key="textColor" systemColor="opaqueSeparatorColor"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
-                                <textInputTraits key="textInputTraits"/>
+                                <textInputTraits key="textInputTraits" secureTextEntry="YES"/>
                             </textField>
                             <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="cTb-YH-zfJ">
                                 <rect key="frame" x="102" y="547" width="88" height="31"/>
@@ -122,7 +122,7 @@
                                             </subviews>
                                         </tableViewCellContentView>
                                         <connections>
-                                            <outlet property="givenChatMessageLabels" destination="FkB-wf-o17" id="F0u-hn-MA1"/>
+                                            <outlet property="givenChatMessageLabel" destination="FkB-wf-o17" id="BrE-IZ-vzT"/>
                                         </connections>
                                     </tableViewCell>
                                 </prototypes>
